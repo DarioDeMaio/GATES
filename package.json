@@ -1,0 +1,22 @@
+{
+  "name": "gates",
+  "version": "1.0.0",
+  "description": "Il progetto GATES mira a sviluppare un sistema completo di monitoraggio ambientale dedicato alle concerie. Attraverso l'impiego di dispositivi IoT, il sistema raccoglie in tempo reale dati critici sugli scarti generati, come l'acqua contaminata e le emissioni gassose. L'obiettivo è creare un sistema integrato che analizzi e archivi accuratamente tali dati, permettendo agli utenti di accedere a informazioni aggregate attraverso un'interfaccia utente intuitiva. Questo approccio fornisce strumenti avanzati per decisioni informate sulla gestione ambientale, contribuendo a rendere il settore conciario più sostenibile.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "prisma": "^5.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.7.0",
+    "express": "^4.18.2"
+  }
+}
