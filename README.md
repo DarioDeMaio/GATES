@@ -25,4 +25,4 @@ Il progetto GATES mira a sviluppare un sistema completo di monitoraggio ambienta
 
 Le concerie associano i dispositivi IoT all'hub IoT di Azure, consentendo una gestione centralizzata dei dispositivi. I dati inviati dai dispositivi vengono elaborati in tempo reale attraverso Azure Stream Analytics e archiviati in un database SQL di Azure. Le Azure Functions permettono all'interfaccia utente di accedere ai dati. Azure App Service supporta la creazione di un'interfaccia utente intuitiva per il monitoraggio dei dati ambientali.
 
-![Architettura proposta](architecture.png)
+![Architettura proposta](images/Tanneries.png)
