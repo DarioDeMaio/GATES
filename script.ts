@@ -1,49 +1,49 @@
-// import { PrismaClient } from '@prisma/client'
-
-// const prisma = new PrismaClient()
-// const express = require('express');
-// const app = express();
-// const path = require('path');
-
-// app.use(express.json());
-
-// app.get("/prova", async (req:any, res:any) =>{
-//   var i:number = 250;
-//   res.json({i});
-// });
-
-// app.get('/', async (req:any, res:any) => {
-//     res.sendFile(path.join(__dirname, 'index.html'));
-// });
-
-// app.listen(8080, () => {
-//   console.log("Server Listening on PORT:", 8080);
-// });
-
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
+const express = require('express');
+const app = express();
+const path = require('path');
 
-async function main() {
-  // const tipo = await prisma.tipologia.create({
-  //   data: {
-  //     tipo: "ciao",
-  //   },
-  // })
-  // console.log(tipo)
-  const tipo = await prisma.tipologia.findMany();
-  console.log(tipo);
-}
+app.use(express.json());
 
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+app.get("/prova", async (req:any, res:any) =>{
+  var i:number = 250;
+  res.json({i});
+});
+
+app.get('/', async (req:any, res:any) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.listen(8080, () => {
+  console.log("Server Listening on PORT:", 8080);
+});
+
+// import { PrismaClient } from '@prisma/client'
+
+// const prisma = new PrismaClient()
+
+// async function main() {
+//   // const tipo = await prisma.tipologia.create({
+//   //   data: {
+//   //     tipo: "ciao",
+//   //   },
+//   // })
+//   // console.log(tipo)
+//   const tipo = await prisma.tipologia.findMany();
+//   console.log(tipo);
+// }
+
+// main()
+//   .then(async () => {
+//     await prisma.$disconnect()
+//   })
+//   .catch(async (e) => {
+//     console.error(e)
+//     await prisma.$disconnect()
+//     process.exit(1)
+//   })
 
 
 // async function main() {
