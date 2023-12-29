@@ -1,5 +1,7 @@
-![Picture](images/logo.png)
-{: .center}
+<p align="center">
+  <img src="imagine/logo.png">
+</p>
+
 # GATES
 
 ## Descrizione del Progetto
