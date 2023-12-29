@@ -1,4 +1,4 @@
-![Picture](images/logo.png){ width="800" height="600" style="display: block; margin: 0 auto" }
+![Picture](images/logo.png){ width="800" height="600" style="display: block; margin: 0 auto", align = "center" }
 # GATES
 
 ## Descrizione del Progetto
