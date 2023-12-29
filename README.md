@@ -1,3 +1,4 @@
+![LOGO](images/logo GATES.png)
 # GATES
 
 ## Descrizione del Progetto
