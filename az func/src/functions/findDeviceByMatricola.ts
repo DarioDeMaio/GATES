@@ -7,7 +7,7 @@ export async function findDeviceByMatricola(request: HttpRequest, context: Invoc
 
     const matricola = request.query.get('matricola');
 
-    const dispositivo = await prisma.dispositivo.findMany({
+    const dispositivo = await prisma.dispositivo.findFirst({
         where:{
             matricola:matricola
         }
