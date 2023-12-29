@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imagine/logo.png">
+  <img src="images/logo.png">
 </p>
 
 # GATES
