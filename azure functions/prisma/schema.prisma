@@ -8,9 +8,7 @@ generator client {
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
-  //shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
-
 model Tipologia {
   id Int @id @default(autoincrement())
   tipo String
@@ -24,4 +22,3 @@ model Dispositivo {
   tipo Tipologia @relation(fields: [tipologiaId], references: [id])
   tipologiaId Int
 }
-
