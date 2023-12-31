@@ -1,24 +1,23 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["debian-openssl-1.0.x"]
 }
 
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
 model Tipologia {
-  id Int @id @default(autoincrement())
-  tipo String
+  id          Int           @id @default(autoincrement())
+  tipo        String
   dispositivi Dispositivo[]
 }
 
 model Dispositivo {
-  id Int @id @default(autoincrement())
+  id               Int       @id @default(autoincrement())
   connectionString String
-  matricola String @unique
-  tipo Tipologia @relation(fields: [tipologiaId], references: [id])
-  tipologiaId Int
+  matricola        String    @unique
+  tipologiaId      Int
+  tipo             Tipologia @relation(fields: [tipologiaId], references: [id])
 }

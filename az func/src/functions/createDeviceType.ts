@@ -6,11 +6,11 @@ export async function createDeviceType(request: HttpRequest, context: Invocation
 
     const name = request.query.get('name') /*|| await request.text() || 'world'*/;
 
-    const tipo = await prisma.tipologia.create({
-        data: {
-          tipo: name,
-        },
-    });
+    // const tipo = await prisma.tipologia.create({
+    //     data: {
+    //       tipo: name,
+    //     },
+    // });
 
     return { body: `Dispositivo di tipo , ${name}, creato!` };
 
