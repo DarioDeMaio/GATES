@@ -4,33 +4,45 @@ import { PrismaClient } from '@prisma/client'
 export async function createDevice(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     const prisma = new PrismaClient();
 
-    var connectionString = request.query.get('connectionString');
-    var t = request.query.get('tipo');
-    var matricola = request.query.get('matricola');
-
-    const tipo = await prisma.tipologia.findFirst({
-        where:{
-            tipo: t
+    // var connectionString = request.query.get('connectionString');
+    // var t = request.query.get('tipo');
+    // var matricola = request.query.get('matricola');
+    try{
+        const data:any = await request.json();
+        const connectionString = data.connectionString;
+        const t = data.t;
+        const matricola = data.matricola;
+        
+        const tipo = await prisma.tipologia.findFirst({
+            where:{
+                tipo: t
+            }
+        });
+        
+        if (!tipo) {
+            return { status: 400, body: 'Tipo non trovato' };
         }
-    });
     
-    if (!tipo) {
-        return { status: 400, body: 'Tipo non trovato' };
-    }
-
-    const dispositivo = await prisma.dispositivo.create({
-        data: {
-            connectionString: connectionString,
-            matricola: matricola,
-            tipo: {
-                connect: {
-                    id: tipo.id,
+        const dispositivo = await prisma.dispositivo.create({
+            data: {
+                connectionString: connectionString,
+                matricola: matricola,
+                tipo: {
+                    connect: {
+                        id: tipo.id,
+                    },
                 },
             },
-        },
-    });
+        });
+    
+        return {body:`${dispositivo}`};
+    } catch (error) {
+        console.error('Errore durante l\'elaborazione della richiesta:', error);
+        return { status: 500, body: 'Errore interno del server' };
+    } finally {
+        await prisma.$disconnect();
+    }
 
-    return {body:`${dispositivo}`};
 };
 
 app.http('createDevice', {

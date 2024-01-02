@@ -4,14 +4,23 @@ import { PrismaClient } from '@prisma/client'
 export async function deleteDevice(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     const prisma = new PrismaClient();
 
-    var matricola = request.query.get('matricola');
-
-    const dispositivo = await prisma.dispositivo.delete({
-        where:{
-            matricola:matricola,
-        },
-    })
-    return { body: `${dispositivo.matricola}`};
+    //var matricola = request.query.get('matricola');
+    try{
+        const data:any = await request.json();
+        
+        const dispositivo = await prisma.dispositivo.delete({
+            where:{
+                matricola:data.matricola,
+            },
+        })
+        return { body: `${dispositivo.matricola}`};
+    }catch(error){
+        console.error('Errore durante l\'elaborazione della richiesta:', error);
+        return { status: 500, body: 'Errore interno del server' };
+    }finally{
+        prisma.$disconnect();
+    }
+    
 };
 
 app.http('deleteDevice', {
