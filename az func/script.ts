@@ -9,7 +9,7 @@ async function main() {
       //   },
       // })
       // console.log(tipo)
-      const tipo = await prisma.dispositivo.findMany();
+      const tipo = await prisma.tipologia.findMany();
       console.log(tipo);
     }
     

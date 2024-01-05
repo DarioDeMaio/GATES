@@ -1,12 +1,13 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import { PrismaClient } from '@prisma/client'
-//http://localhost:7071/api/createDevice?connectionString=test&tipo=acqua&matricola=1234
+
 export async function createDevice(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     const prisma = new PrismaClient();
 
-    // var connectionString = request.query.get('connectionString');
-    // var t = request.query.get('tipo');
-    // var matricola = request.query.get('matricola');
+    var iothub = require('azure-iothub');
+    var connectionString = process.env.IOT_HUB_CONNECTION_STRING;
+    var registry = iothub.Registry.fromConnectionString(connectionString);
+    
     try{
         const data:any = await request.json();
         const connectionString = data.connectionString;
@@ -34,7 +35,11 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
                 },
             },
         });
-    
+        
+        const device = registry.create({
+            deviceId:dispositivo.id
+        });
+
         return {body:`${dispositivo}`};
     } catch (error) {
         console.error('Errore durante l\'elaborazione della richiesta:', error);

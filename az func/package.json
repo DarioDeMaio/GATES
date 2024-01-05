@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@azure/functions": "^4.0.0",
-    "@prisma/client": "^5.7.1"
+    "@prisma/client": "^5.7.1",
+    "azure-iothub": "^1.16.4"
   },
   "devDependencies": {
     "@types/node": "^18.x",

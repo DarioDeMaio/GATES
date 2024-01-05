@@ -6,7 +6,7 @@ export async function findDeviceType(request: HttpRequest, context: InvocationCo
     // context.log(`Http function processed request for url "${request.url}"`);
     try{
         const tipo = await prisma.tipologia.findMany();
-        return { body : `${tipo}` };
+        return { body : `${tipo.forEach}` };
     }catch(error){
         console.error('Errore durante l\'elaborazione della richiesta:', error);
         return { status: 500, body: 'Errore interno del server' };
