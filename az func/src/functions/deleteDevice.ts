@@ -13,7 +13,11 @@ export async function deleteDevice(request: HttpRequest, context: InvocationCont
                 matricola:data.matricola,
             },
         })
-        return { body: `${dispositivo.matricola}`};
+        return {
+            jsonBody: {
+              dispositivo
+            },
+          };
     }catch(error){
         console.error('Errore durante l\'elaborazione della richiesta:', error);
         return { status: 500, body: 'Errore interno del server' };

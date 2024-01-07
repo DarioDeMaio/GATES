@@ -14,7 +14,11 @@ export async function deleteDeviceType(request: HttpRequest, context: Invocation
             id:id,
         },
     })
-        return { body: `${tipo.tipo}`};
+    return {
+        jsonBody: {
+          tipo
+        },
+      };
     }catch(error){
         console.error('Errore durante l\'elaborazione della richiesta:', error);
         return { status: 500, body: 'Errore interno del server' };

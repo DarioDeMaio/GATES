@@ -12,7 +12,11 @@ export async function createDeviceType(request: HttpRequest, context: Invocation
               tipo: data.name,
             },
         });
-        return { body: `Dispositivo di tipo , ${tipo.tipo}, creato!` };
+        return {
+            jsonBody: {
+              tipo
+            },
+          };
     }catch(error){
         console.error('Errore durante l\'elaborazione della richiesta:', error);
         return { status: 500, body: 'Errore interno del server' };

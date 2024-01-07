@@ -36,14 +36,18 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
             },
         });
         
-        const device = registry.create({
+        registry.create({
             deviceId:dispositivo.id
         });
 
-        return {body:`${dispositivo}`};
+        return {
+            jsonBody: {
+              dispositivo
+            },
+          };
     } catch (error) {
         console.error('Errore durante l\'elaborazione della richiesta:', error);
-        return { status: 500, body: 'Errore interno del server' };
+        return { status: 500, body: error.message };
     } finally {
         await prisma.$disconnect();
     }
