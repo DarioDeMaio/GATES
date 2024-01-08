@@ -1,6 +1,6 @@
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["debian-openssl-1.0.x", "windows"]
+  binaryTargets = ["debian-openssl-1.1.x", "windows"]
 }
 
 datasource db {
@@ -8,16 +8,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tipologia {
-  id          Int           @id @default(autoincrement())
-  tipo        String
-  dispositivi Dispositivo[]
-}
-
 model Dispositivo {
   id               Int       @id @default(autoincrement())
   connectionString String
   matricola        String    @unique
-  tipologiaId      Int
-  tipo             Tipologia @relation(fields: [tipologiaId], references: [id])
 }

@@ -10,42 +10,38 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
     
     try{
         const data:any = await request.json();
-        const connectionString = data.connectionString;
-        const t = data.t;
+
         const matricola = data.matricola;
         
-        const tipo = await prisma.tipologia.findFirst({
-            where:{
-                tipo: t
-            }
-        });
-        
-        if (!tipo) {
-            return { status: 400, body: 'Tipo non trovato' };
-        }
-    
         const dispositivo = await prisma.dispositivo.create({
             data: {
-                connectionString: connectionString,
+                connectionString: "",
                 matricola: matricola,
-                tipo: {
-                    connect: {
-                        id: tipo.id,
-                    },
-                },
             },
         });
         
-        // const device = registry.create({
-        //     deviceId:dispositivo.id
-        // });
+        const device = (await registry.create({
+            deviceId:dispositivo.id
+        })).responseBody;
+
+        var cs =  `HostName=gates.azure-devices.net;DeviceId=${dispositivo.id};SharedAccessKey=${device.authentication.symmetricKey.primaryKey}`;
+        
+        const updateDevice = await prisma.dispositivo.update({
+            where: {
+              id: dispositivo.id,
+            },
+            data: {
+              connectionString: cs,
+            },
+          })
 
         return {
             jsonBody: {
-              dispositivo,
-              //device
+                updateDevice
             },
           };
+
+
     } catch (error) {
         console.error('Errore durante l\'elaborazione della richiesta:', error);
         return { status: 500, body: error.message };
@@ -56,7 +52,7 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
 };
 
 app.http('createDevice', {
-    methods: ['GET', 'POST'],
+    methods: ['POST'],
     authLevel: 'anonymous',
     handler: createDevice
 });

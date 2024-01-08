@@ -5,18 +5,15 @@ export async function findDevice(request: HttpRequest, context: InvocationContex
     const prisma = new PrismaClient();
 
     var iothub = require('azure-iothub');
-    var connectionString = "HostName=gates.azure-devices.net;SharedAccessKeyName=registryRead;SharedAccessKey=jV6DeHSOYKXyX//D+c9C90L0m7vrM+RzsAIoTP9XGB8=";
+    var connectionString = process.env.IOT_HUB_CONNECTION_STRING;
     var registry = iothub.Registry.fromConnectionString(connectionString);
 
     try {
         const dispositivo = await prisma.dispositivo.findMany();
-       
-        //const device = (await registry.list()).responseBody;
 
         return {
             jsonBody: {
                 dispositivo,
-                //deviceList: device,
             },
         };
     } catch (error) {
@@ -28,7 +25,7 @@ export async function findDevice(request: HttpRequest, context: InvocationContex
 };
 
 app.http('findDevice', {
-    methods: ['GET', 'POST'],
+    methods: ['GET'],
     authLevel: 'anonymous',
     handler: findDevice
 });
