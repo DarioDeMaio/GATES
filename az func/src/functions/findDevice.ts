@@ -5,26 +5,20 @@ export async function findDevice(request: HttpRequest, context: InvocationContex
     const prisma = new PrismaClient();
 
     var iothub = require('azure-iothub');
-    var connectionString = process.env.IOT_HUB_CONNECTION_STRING;
+    var connectionString = "HostName=gates.azure-devices.net;SharedAccessKeyName=registryRead;SharedAccessKey=jV6DeHSOYKXyX//D+c9C90L0m7vrM+RzsAIoTP9XGB8=";
     var registry = iothub.Registry.fromConnectionString(connectionString);
 
     try {
         const dispositivo = await prisma.dispositivo.findMany();
-        // const device = registry.get("7");
-
-        // context.log(`Dispositivo ottenuto con successo: ${JSON.stringify(device)}`);
-
-        // const deviceKeys = await registry.getTwin(device.deviceId);
-        // const deviceConnectionString = `HostName=${registry._config.host};DeviceId=${device.deviceId};SharedAccessKey=${deviceKeys[0].value}`;
-
-
+       
+        //const device = (await registry.list()).responseBody;
 
         return {
             jsonBody: {
-              dispositivo,
-              //deviceConnectionString
+                dispositivo,
+                //deviceList: device,
             },
-          };
+        };
     } catch (error) {
         context.log(error);
         return { status: 500, body: 'Errore interno del server' };

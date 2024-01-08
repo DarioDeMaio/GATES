@@ -36,13 +36,14 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
             },
         });
         
-        registry.create({
-            deviceId:dispositivo.id
-        });
+        // const device = registry.create({
+        //     deviceId:dispositivo.id
+        // });
 
         return {
             jsonBody: {
-              dispositivo
+              dispositivo,
+              //device
             },
           };
     } catch (error) {
