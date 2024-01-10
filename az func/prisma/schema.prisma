@@ -4,12 +4,19 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "sqlserver"
   url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Dispositivo {
   id               Int       @id @default(autoincrement())
   connectionString String
   matricola        String    @unique
+}
+
+model Dati{
+  id               Int       @id @default(autoincrement())
+  temperature Float
+  humidity Float
 }
