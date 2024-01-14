@@ -13,10 +13,45 @@ model Dispositivo {
   id               Int       @id @default(autoincrement())
   connectionString String
   matricola        String    @unique
+  water Acqua?
+  aria Aria?
 }
 
-model Dati{
-  id               Int       @id @default(autoincrement())
-  temperature Float
-  humidity Float
+model Acqua{
+  //id               Int       @id @default(autoincrement())
+  device    Dispositivo @relation(fields: [idDispositivo], references: [id], onDelete: Cascade)
+  idDispositivo  Int @unique
+  misurazioniAcqua MisurazioniAcqua[]
 }
+
+model MisurazioniAcqua{
+  id               Int       @id @default(autoincrement())
+  pH Float
+  metalli Float
+  dispositivo Acqua @relation(fields: [dispId], references: [idDispositivo])
+  dispId Int
+}
+
+model Aria{
+  //id               Int       @id @default(autoincrement())
+  device    Dispositivo @relation(fields: [idDispositivo], references: [id], onDelete: Cascade)
+  idDispositivo  Int @unique
+  misurazioneAria MisurazioniAria[]
+}
+
+model MisurazioniAria{
+  id               Int       @id @default(autoincrement())
+  cov Float
+  gas Float
+  dispositivo Aria @relation(fields: [dispId], references: [idDispositivo])
+  dispId Int
+}
+
+
+// model Dati{
+//   id               Int       @id @default(autoincrement())
+//   temperature Float
+//   humidity Float
+//   device    Dispositivo   @relation(fields: [idDispositivo], references: [id])
+//   idDispositivo  Int
+// }

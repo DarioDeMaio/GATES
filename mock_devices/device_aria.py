@@ -13,13 +13,14 @@ from azure.iot.device import IoTHubDeviceClient, Message
 # You can use the Azure CLI to find the connection string:
 # az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
 
-CONNECTION_STRING = os.getenv("HostName=gates.azure-devices.net;DeviceId=1;SharedAccessKey=VZ5sl7Y0jIPxvS2SawjJDOgBcG1JLOzzvAIoTNlxBf4=")
+CONNECTION_STRING = os.getenv("HostName=gates.azure-devices.net;DeviceId=2;SharedAccessKey=vfM15R3xm/FBC79ujce97sonKSGHyxv1/AIoTKSzgS0=")
 
 # Define the JSON message to send to IoT Hub.
-TEMPERATURE = 20.0
-HUMIDITY = 60
+COV = 20.0
+GAS = 60
+ID=2
 #id=5
-MSG_TXT = '{{"temperature": {temperature},"humidity": {humidity}}}'
+MSG_TXT = '{{"cov": {PH}, "gas": {METALLI}, "dispId": {ID}}}'
 
 
 def run_telemetry_sample(client):
@@ -31,17 +32,17 @@ def run_telemetry_sample(client):
 
     while i<3:
         # Build the message with simulated telemetry values.
-        temperature = TEMPERATURE + (random.random() * 15)
-        humidity = HUMIDITY + (random.random() * 20)
-        msg_txt_formatted = MSG_TXT.format(temperature=temperature, humidity=humidity)
+        cov = COV + (random.random() * 15)
+        gas = GAS + (random.random() * 20)
+        msg_txt_formatted = MSG_TXT.format(PH=cov, METALLI=gas, ID=ID)
         message = Message(msg_txt_formatted)
 
         # Add a custom application property to the message.
         # An IoT hub can filter on these properties without access to the message body.
-        if temperature > 30:
-            message.custom_properties["temperatureAlert"] = "true"
-        else:
-            message.custom_properties["temperatureAlert"] = "false"
+        # if pH > 30:
+        #     message.custom_properties["temperatureAlert"] = "true"
+        # else:
+        #     message.custom_properties["temperatureAlert"] = "false"
 
         # Send the message.
         print("Sending message: {}".format(message))
@@ -57,7 +58,7 @@ def main():
 
     # Instantiate the client. Use the same instance of the client for the duration of
     # your application
-    client = IoTHubDeviceClient.create_from_connection_string("HostName=gates.azure-devices.net;DeviceId=1;SharedAccessKey=VZ5sl7Y0jIPxvS2SawjJDOgBcG1JLOzzvAIoTNlxBf4=")
+    client = IoTHubDeviceClient.create_from_connection_string("HostName=gates.azure-devices.net;DeviceId=2;SharedAccessKey=vfM15R3xm/FBC79ujce97sonKSGHyxv1/AIoTKSzgS0=")
 
     # Run Sample
     try:

@@ -12,7 +12,13 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
         const data:any = await request.json();
 
         const matricola = data.matricola;
-        
+        const tipo = data.tipo;
+        console.log(tipo,"\n");
+
+        if(tipo !== "acqua" && tipo !== "aria"){
+            return {body:"il tipo non è disponibile!"};
+        }
+
         const dispositivo = await prisma.dispositivo.create({
             data: {
                 connectionString: "",
@@ -33,7 +39,21 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
             data: {
               connectionString: cs,
             },
-          })
+          });
+
+          if(tipo === "acqua"){
+            const acqua = await prisma.acqua.create({
+                data:{
+                    idDispositivo:updateDevice.id
+                }
+            });
+          }else{
+            const aria = await prisma.aria.create({
+                data:{
+                    idDispositivo:updateDevice.id
+                }
+            });
+          }
 
         return {
             jsonBody: {
