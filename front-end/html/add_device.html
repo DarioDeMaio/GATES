@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aggiungi Dispositivo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <iframe src="navbar.html" style="width:100%; border:none;"></iframe>
+    <div class="container mt-5">
+        <h2>Aggiungi Dispositivo</h2>
+        <form>
+        <div class="form-group">
+            <label for="matricola">Matricola:</label>
+            <input type="text" class="form-control" id="matricola" name="matricola" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo">Tipo:</label>
+            <select class="form-control" id="tipo" name="tipo" required>
+            <option value="acqua">Acqua</option>
+            <option value="aria">Aria</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Aggiungi Dispositivo</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
