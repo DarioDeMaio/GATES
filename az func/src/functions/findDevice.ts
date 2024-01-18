@@ -4,14 +4,20 @@ import { PrismaClient } from '@prisma/client'
 export async function findDevice(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     const prisma = new PrismaClient();
 
-    var iothub = require('azure-iothub');
-    var connectionString = process.env.IOT_HUB_CONNECTION_STRING;
-    var registry = iothub.Registry.fromConnectionString(connectionString);
+    // var iothub = require('azure-iothub');
+    // var connectionString = process.env.IOT_HUB_CONNECTION_STRING;
+    // var registry = iothub.Registry.fromConnectionString(connectionString);
 
     try {
-        const dispositivo = await prisma.dispositivo.findMany();
+        const dispositivo = await prisma.dispositivo.findMany({
+            include:{
+                aria:true,
+                water:true
+            }
+        });
 
         return {
+            status:200,
             jsonBody: {
                 dispositivo,
             },

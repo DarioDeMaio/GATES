@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elenco Dispositivi</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    h2 {
+      color: #007bff;
+    }
+
+    .list-group-item {
+      background-color: #f1f3f5;
+      border: 1px solid #dee2e6;
+      margin-bottom: 10px;
+    }
+
+    .font-weight-bold {
+      color: #212529;
+    }
+
+    .badge-pill {
+      font-size: 14px;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .badge-acqua {
+      background-color: #4CAF50;
+      color: #ffffff;
+    }
+
+    .badge-aria {
+      background-color: #7FFFD4;
+      color: #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <iframe src="navbar.html" style="width:100%; border:none;"></iframe>
+  <div class="container mt-5">
+    <h2>Elenco Dispositivi</h2>
+    <ul id="dispositivi-lista" class="list-group">
+    </ul>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="../js/findDevice.js"></script>
+</body>
+
+</html>
