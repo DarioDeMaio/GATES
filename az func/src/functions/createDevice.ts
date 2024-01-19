@@ -57,8 +57,8 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
 
         return {status:200,
             jsonBody: {
-                dispositivo
-                //updateDevice
+                //dispositivo
+                updateDevice
             },
           };
 

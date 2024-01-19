@@ -23,7 +23,7 @@ document.getElementById("aggiungiDispositivoForm").addEventListener("submit", fu
   })
   .then(data => {
     console.log(data)
-    var msg = "Dispositivo "+ `${data.dispositivo.matricola}`+ " aggiunto con successo!"
+    var msg = "Dispositivo "+ `${data.updateDevice.matricola}`+ " aggiunto con successo!"
     mostraPopupSuccesso(msg);
   })
   .catch(error => {

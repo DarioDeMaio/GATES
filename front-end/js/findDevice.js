@@ -12,8 +12,12 @@ fetch("http://localhost:7071/api/findDevice")
         const listItem = document.createElement("li");
         listItem.className = "list-group-item d-flex justify-content-between align-items-center";
         listItem.innerHTML = `
-          <span class="font-weight-bold">Matricola: ${dispositivo.matricola}</span>
-          <span class="badge badge-primary badge-pill">${getTipoDispositivo(dispositivo)}</span>
+          <a href="dettagliDevice.html?matricola=${dispositivo.matricola}" class="d-flex justify-content-between align-items-center w-100">
+            <div class="d-flex align-items-center">
+              <span class="font-weight-bold">Matricola: ${dispositivo.matricola}</span>
+            </div>
+            <div>${getTipoDispositivo(dispositivo)}</div>
+          </a>
         `;
         listaDispositivi.appendChild(listItem);
       });
@@ -28,9 +32,9 @@ fetch("http://localhost:7071/api/findDevice")
 // Funzione per ottenere il tipo corretto del dispositivo
 function getTipoDispositivo(dispositivo) {
   if (dispositivo.aria) {
-    return "Aria";
+    return '<img src="../images/wind_icon.png" alt="Logo Aria" height="20">';
   } else if (dispositivo.water) {
-    return "Acqua";
+    return '<img src="../images/water_icon.png" alt="Logo Acqua" height="20">';
   } else {
     return "Tipo non definito";
   }

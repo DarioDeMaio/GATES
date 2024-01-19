@@ -1,0 +1,22 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.device-details {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.device-details img {
+  margin-right: 10px;
+}
+
+.copy-btn {
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  text-decoration: underline;
+}

@@ -11,10 +11,15 @@ export async function findDeviceByMatricola(request: HttpRequest, context: Invoc
         const dispositivo = await prisma.dispositivo.findFirst({
             where:{
                 matricola:matricola
+            },
+            include:{
+                water:true,
+                aria:true
             }
         });
        
         return {
+            status:200,
             jsonBody: {
               dispositivo
             },

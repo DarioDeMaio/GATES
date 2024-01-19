@@ -48,10 +48,3 @@ model MisurazioniAria{
 }
 
 
-// model Dati{
-//   id               Int       @id @default(autoincrement())
-//   temperature Float
-//   humidity Float
-//   device    Dispositivo   @relation(fields: [idDispositivo], references: [id])
-//   idDispositivo  Int
-// }

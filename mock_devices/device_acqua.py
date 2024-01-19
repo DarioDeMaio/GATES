@@ -13,7 +13,7 @@ from azure.iot.device import IoTHubDeviceClient, Message
 # You can use the Azure CLI to find the connection string:
 # az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
 
-CONNECTION_STRING = os.getenv("HostName=gates.azure-devices.net;DeviceId=1;SharedAccessKey=VZ5sl7Y0jIPxvS2SawjJDOgBcG1JLOzzvAIoTNlxBf4=")
+CONNECTION_STRING = os.getenv("CONNECTION_STRING")
 
 # Define the JSON message to send to IoT Hub.
 PH = 20.0
