@@ -15,6 +15,10 @@ fetch("http://localhost:7071/api/findDeviceByMatricola", {
         if (data.dispositivo) {
             // Popola dinamicamente i dettagli del dispositivo
             const deviceDetailsHTML = `
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Dettagli Dispositivo</h2>
+                <button class="btn btn-danger" onclick="eliminaDispositivo()">Elimina</button>
+            </div>
             <div class="d-flex align-items-center mb-3">
                 <span class="font-weight-bold mr-2">Matricola:</span>
                 <span>${data.dispositivo.matricola}</span>
@@ -83,6 +87,7 @@ function findMisurazioni(matricola) {
                                 <th scope="col">ID</th>
                                 <th scope="col">${getMisurazioneLabel1(data.tipo)}</th>
                                 <th scope="col">${getMisurazioneLabel2(data.tipo)}</th>
+                                <th scope="col">Data</th>
                                 <!-- Aggiungi altri header in base al tipo di misurazioni -->
                             </tr>
                         </thead>
@@ -111,30 +116,61 @@ function getMisurazioneLabel2(tipoDispositivo) {
 
 // Funzione per popolare le righe della tabella delle misurazioni
 function populateMisurazioniRows(data) {
-    console.log(data.misurazioni)
-    console.log(data.tipo)
-    if(data.tipo==="acqua"){
+    if (data.tipo === "acqua") {
         return data.misurazioni.map(misurazione => {
+            // Formatta la data per visualizzare solo l'anno, il mese e il giorno
+            const formattedDate = new Date(misurazione.data).toLocaleDateString('it-IT');
+
             return `
                 <tr>
                     <th scope="row">${misurazione.id}</th>
                     <td>${misurazione.pH}</td>
                     <td>${misurazione.metalli}</td>
-                    <!-- Aggiungi altre colonne in base al tipo di misurazioni -->
+                    <td>${formattedDate}</td> <!-- Aggiungi la colonna per la data -->
                 </tr>
             `;
         }).join('');
-    }else{
-        return misurazioni.map(misurazione => {
+    } else {
+        return data.misurazioni.map(misurazione => {
+            // Formatta la data per visualizzare solo l'anno, il mese e il giorno
+            const formattedDate = new Date(misurazione.data).toLocaleDateString('it-IT');
+
             return `
                 <tr>
                     <th scope="row">${misurazione.id}</th>
                     <td>${misurazione.gas}</td>
                     <td>${misurazione.cov}</td>
-                    <!-- Aggiungi altre colonne in base al tipo di misurazioni -->
+                    <td>${formattedDate}</td> <!-- Aggiungi la colonna per la data -->
                 </tr>
             `;
         }).join('');
     }
-    
+}
+
+
+// Funzione per eliminare il dispositivo
+function eliminaDispositivo() {
+    const confermaEliminazione = confirm("Sei sicuro di voler eliminare questo dispositivo?");
+
+    if (confermaEliminazione) {
+        // Ottieni la matricola dal parametro nell'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const matricola = urlParams.get('matricola');
+
+        fetch("http://localhost:7071/api/deleteDevice", {
+            method: "POST",
+            body: JSON.stringify({ "matricola": matricola }),
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    // Reindirizza alla pagina dell'elenco dei dispositivi dopo l'eliminazione
+                    window.location.href = "../html/findDevice.html";
+                } else {
+                    console.error("Errore durante l'eliminazione del dispositivo");
+                }
+            })
+            .catch(error => {
+                console.error("Errore nella richiesta:", error);
+            });
+    }
 }

@@ -24,13 +24,15 @@ model Acqua{
   misurazioniAcqua MisurazioniAcqua[]
 }
 
-model MisurazioniAcqua{
+model MisurazioniAcqua {
   id               Int       @id @default(autoincrement())
-  pH Float
-  metalli Float
-  dispositivo Acqua @relation(fields: [dispId], references: [idDispositivo])
-  dispId Int
+  pH               Float
+  metalli          Float
+  data             DateTime  @default(now())
+  dispositivo      Acqua     @relation(fields: [dispId], references: [idDispositivo], onDelete: Cascade)
+  dispId           Int
 }
+
 
 model Aria{
   //id               Int       @id @default(autoincrement())
@@ -39,12 +41,14 @@ model Aria{
   misurazioneAria MisurazioniAria[]
 }
 
-model MisurazioniAria{
+model MisurazioniAria {
   id               Int       @id @default(autoincrement())
-  cov Float
-  gas Float
-  dispositivo Aria @relation(fields: [dispId], references: [idDispositivo])
-  dispId Int
+  cov              Float
+  gas              Float
+  data             DateTime  @default(now())
+  dispositivo      Aria      @relation(fields: [dispId], references: [idDispositivo], onDelete: Cascade)
+  dispId           Int
 }
+
 
 
