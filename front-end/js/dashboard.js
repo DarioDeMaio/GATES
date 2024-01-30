@@ -33,7 +33,7 @@ async function fetchDataAndRenderCharts() {
         const sommaCOV = misurazioni.reduce((acc, misurazione) => acc + misurazione.cov, 0);
         const sommaGAS = misurazioni.reduce((acc, misurazione) => acc + misurazione.gas, 0);
 
-        renderPieChart('graficoTortaAria', 'Somma COV e Gas Serra', sommaCOV, sommaGAS);
+        renderPieChart('graficoTortaAria', "COV", "Gas Serra", sommaCOV, sommaGAS);
 
     } else {
         document.getElementById('graficoMediePH').style.display = 'inline';
@@ -53,7 +53,7 @@ async function fetchDataAndRenderCharts() {
         const sommaPH = misurazioni.reduce((acc, misurazione) => acc + misurazione.pH, 0);
         const sommaMetalli = misurazioni.reduce((acc, misurazione) => acc + misurazione.metalli, 0);
 
-        renderPieChart('graficoTortaAcqua', 'Somma pH e Metalli Pesanti', sommaPH, sommaMetalli);
+        renderPieChart('graficoTortaAcqua', "pH", "Metalli Pesanti", sommaPH, sommaMetalli);
     }
 
 }
@@ -110,12 +110,12 @@ function renderChart(containerId, title, data, color) {
     });
 }
 
-function renderPieChart(containerId, title, value1, value2) {
+function renderPieChart(containerId, lab1, lab2, value1, value2) {
     const ctx = document.getElementById(containerId).getContext('2d');
     new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['pH', 'Metalli Pesanti'],
+            labels: [lab1, lab2],
             datasets: [{
                 data: [value1, value2],
                 backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
