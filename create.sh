@@ -77,8 +77,8 @@ input_properties=$(cat <<EOF
 EOF
 )
 
-echo "Creating input for Stream Analytics Job $stream_analytics_job_name: $SAJ_input_name"
-az stream-analytics input create --name $IOT_HUB --job-name $STREAM_JOB --resource-group $RESOURCE_GROUP --properties "$input_properties"
+echo "Creating input for Stream Analytics Job $stream_job"
+az stream-analytics input create --name $IOT_HUB --job-name $stream_job --resource-group $RESOURCE_GROUP --properties "$input_properties"
 
 #Configura l'output per lo Stream Analytics Job
 
