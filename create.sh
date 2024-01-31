@@ -13,8 +13,8 @@ startIp=0.0.0.0
 endIp=255.255.255.255
 iot_hub_policy_name="iothubowner"
 
-echo "Login"
-az login
+# echo "Login"
+# az login
 
 echo "Creating resource group: $resourceGroup...."
 az group create --name $resourceGroup --location $location
