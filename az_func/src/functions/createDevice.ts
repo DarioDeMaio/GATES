@@ -30,7 +30,7 @@ export async function createDevice(request: HttpRequest, context: InvocationCont
             deviceId:dispositivo.id
         })).responseBody;
 
-        var cs =  `HostName=gates.azure-devices.net;DeviceId=${dispositivo.id};SharedAccessKey=${device.authentication.symmetricKey.primaryKey}`;
+        var cs =  `HostName=gates-iot-hub.azure-devices.net;DeviceId=${dispositivo.id};SharedAccessKey=${device.authentication.symmetricKey.primaryKey}`;
         const updateDevice = await prisma.dispositivo.update({
             where: {
               id: dispositivo.id,

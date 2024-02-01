@@ -47,7 +47,7 @@ echo "SHADOW_DATABASE_URL=\"sqlserver://$server.database.windows.net:1433;databa
 
 cd az_func
 npx prisma generate
-# npx prisma db push
+npx prisma db push
 func azure functionapp publish $function_app
 
 

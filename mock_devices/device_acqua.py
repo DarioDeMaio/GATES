@@ -58,7 +58,7 @@ def main():
 
     # Instantiate the client. Use the same instance of the client for the duration of
     # your application
-    client = IoTHubDeviceClient.create_from_connection_string("HostName=gates.azure-devices.net;DeviceId=1;SharedAccessKey=exedH1aWFk2kZv0JDMyyYErsMiB7wHRBxAIoTJlCv34=")
+    client = IoTHubDeviceClient.create_from_connection_string("HostName=gates-iot-hub.azure-devices.net;DeviceId=1;SharedAccessKey=3Sl8aY2yE+hAJWToQcvnNoyaSXjGApQfNAIoTEkAkfk=")
 
     # Run Sample
     try:
