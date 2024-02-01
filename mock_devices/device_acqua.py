@@ -18,7 +18,7 @@ CONNECTION_STRING = os.getenv("CONNECTION_STRING")
 # Define the JSON message to send to IoT Hub.
 PH = 20.0
 METALLI = 60
-ID=1
+ID=2
 #id=5
 MSG_TXT = '{{"pH": {PH}, "metalli": {METALLI}, "dispId": {ID}}}'
 
@@ -58,7 +58,7 @@ def main():
 
     # Instantiate the client. Use the same instance of the client for the duration of
     # your application
-    client = IoTHubDeviceClient.create_from_connection_string("HostName=gates-iot-hub.azure-devices.net;DeviceId=1;SharedAccessKey=3Sl8aY2yE+hAJWToQcvnNoyaSXjGApQfNAIoTEkAkfk=")
+    client = IoTHubDeviceClient.create_from_connection_string("HostName=gates-iot-hub.azure-devices.net;DeviceId=2;SharedAccessKey=Ibc7VossYKWyTjFlnD5bcFmN4RC7uBwb5AIoTC9Egic=")
 
     # Run Sample
     try:

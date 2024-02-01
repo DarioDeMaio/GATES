@@ -35,7 +35,7 @@ function createDevice(request, context) {
             const device = (yield registry.create({
                 deviceId: dispositivo.id
             })).responseBody;
-            var cs = `HostName=gattesHub.azure-devices.net;DeviceId=${dispositivo.id};SharedAccessKey=${device.authentication.symmetricKey.primaryKey}`;
+            var cs = `HostName=gates-iot-hub.azure-devices.net;DeviceId=${dispositivo.id};SharedAccessKey=${device.authentication.symmetricKey.primaryKey}`;
             const updateDevice = yield prisma.dispositivo.update({
                 where: {
                     id: dispositivo.id,
