@@ -7,7 +7,7 @@ export async function findDevice(request: HttpRequest, context: InvocationContex
     // var iothub = require('azure-iothub');
     // var connectionString = process.env.IOT_HUB_CONNECTION_STRING;
     // var registry = iothub.Registry.fromConnectionString(connectionString);
-
+    // let x;
     try {
         const dispositivo = await prisma.dispositivo.findMany({
             include:{

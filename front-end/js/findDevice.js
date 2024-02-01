@@ -1,5 +1,5 @@
 // Esegui una richiesta per ottenere la lista dei dispositivi dalla tua Azure Function
-fetch("http://localhost:7071/api/findDevice")
+fetch("https://gatess.azurewebsites.net/api/finddevice")
   .then(response => response.json())
   .then(data => {
     // Trova il div con l'ID "dispositivi-lista"

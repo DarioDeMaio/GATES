@@ -3,14 +3,15 @@ const urlParams = new URLSearchParams(window.location.search);
 const matricola = urlParams.get('matricola');
 
 // Esegui una richiesta per ottenere i dettagli del dispositivo dalla tua Azure Function
-fetch("http://localhost:7071/api/findDeviceByMatricola", {
+fetch("https://gatess.azurewebsites.net/api/finddevicebymatricola", {
     method: "POST",
     body: JSON.stringify({ matricola: matricola }),
 })
     .then(response => response.json())
     .then(data => {
         const deviceDetailsContainer = document.getElementById("deviceDetails");
-
+        console.log("\n\n\n\n")
+        console.log(data.dispositivo.connectionString)
         // Verifica se la risposta contiene un campo "dispositivo"
         if (data.dispositivo) {
             // Popola dinamicamente i dettagli del dispositivo
@@ -70,7 +71,7 @@ function copyConnectionString() {
 
 // Funzione per ottenere le misurazioni e popolare la tabella
 function findMisurazioni(matricola) {
-    fetch("http://localhost:7071/api/findMisurazioni", {
+    fetch("https://gatess.azurewebsites.net/api/findmisurazioni", {
         method: "POST",
         body: JSON.stringify({ matricola: matricola }),
     })
@@ -157,7 +158,7 @@ function eliminaDispositivo() {
         const urlParams = new URLSearchParams(window.location.search);
         const matricola = urlParams.get('matricola');
 
-        fetch("http://localhost:7071/api/deleteDevice", {
+        fetch("https://gatess.azurewebsites.net/api/deletedevice", {
             method: "POST",
             body: JSON.stringify({ "matricola": matricola }),
         })

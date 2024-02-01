@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client'
 
 export async function findDeviceByMatricola(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     const prisma = new PrismaClient();
+    // let x;
 
     try {
         const data:any = await request.json();

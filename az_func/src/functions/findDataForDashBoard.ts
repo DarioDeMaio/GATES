@@ -13,7 +13,7 @@ export async function findDataForDashBoard(request: HttpRequest, context: Invoca
         let misurazioni;
 
 if (tipo === "aria") {
-    // Filtra le misurazioni aria per l'anno specificato
+
     misurazioni = await prisma.misurazioniAria.findMany({
         where: {
             data: {
@@ -30,7 +30,7 @@ if (tipo === "aria") {
         },
     };
 } else {
-    // Filtra le misurazioni acqua per l'anno specificato
+    
     const misurazioniAcqua = await prisma.misurazioniAcqua.findMany({
         where: {
             data: {

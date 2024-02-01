@@ -7,7 +7,7 @@ async function fetchDataAndRenderCharts() {
         return;
     }
 
-    const response = await fetch('http://localhost:7071/api/findDataForDashBoard', {
+    const response = await fetch('https://gatess.azurewebsites.net/api/finddatafordashboard', {
         method: 'POST',
         body: JSON.stringify({ tipo: tipoDispositivo, anno: anno }),
     });

@@ -4,9 +4,9 @@ import { PrismaClient } from '@prisma/client'
 export async function deleteDevice(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     const prisma = new PrismaClient();
 
-    // var iothub = require('azure-iothub');
-    // var connectionString = process.env.IOT_HUB_CONNECTION_STRING;
-    // var registry = iothub.Registry.fromConnectionString(connectionString);
+    var iothub = require('azure-iothub');
+    var connectionString = process.env.IOT_HUB_CONNECTION_STRING;
+    var registry = iothub.Registry.fromConnectionString(connectionString);
 
     try{
         const data:any = await request.json();
@@ -16,7 +16,7 @@ export async function deleteDevice(request: HttpRequest, context: InvocationCont
             },
         });
 
-        //const device =  (await registry.delete((dispositivo.id).toString())).responseBody;
+        const device =  (await registry.delete((dispositivo.id).toString())).responseBody;
 
         return {
             status:200,

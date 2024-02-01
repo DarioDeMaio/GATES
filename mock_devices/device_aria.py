@@ -13,12 +13,12 @@ from azure.iot.device import IoTHubDeviceClient, Message
 # You can use the Azure CLI to find the connection string:
 # az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
 
-CONNECTION_STRING = os.getenv("HostName=gates.azure-devices.net;DeviceId=2;SharedAccessKey=vfM15R3xm/FBC79ujce97sonKSGHyxv1/AIoTKSzgS0=")
+CONNECTION_STRING = os.getenv("HostName=gates.azure-devices.net;DeviceId=1;SharedAccessKey=MIQru7YPIUCHNne3VXpBZLlae7wm+n2+OAIoTHhqvBY=")
 
 # Define the JSON message to send to IoT Hub.
 COV = 20.0
 GAS = 60
-ID=2
+ID=1
 #id=5
 MSG_TXT = '{{"cov": {PH}, "gas": {METALLI}, "dispId": {ID}}}'
 
@@ -58,7 +58,7 @@ def main():
 
     # Instantiate the client. Use the same instance of the client for the duration of
     # your application
-    client = IoTHubDeviceClient.create_from_connection_string("HostName=gates.azure-devices.net;DeviceId=2;SharedAccessKey=vfM15R3xm/FBC79ujce97sonKSGHyxv1/AIoTKSzgS0=")
+    client = IoTHubDeviceClient.create_from_connection_string("HostName=gates-iot-hub.azure-devices.net;DeviceId=1;SharedAccessKey=MIQru7YPIUCHNne3VXpBZLlae7wm+n2+OAIoTHhqvBY=")
 
     # Run Sample
     try:

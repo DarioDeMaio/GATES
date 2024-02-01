@@ -9,7 +9,7 @@ document.getElementById("aggiungiDispositivoForm").addEventListener("submit", fu
     tipo: tipo
   };
 
-  fetch("http://localhost:7071/api/createDevice", {
+  fetch("https://gatess.azurewebsites.net/api/createdevice", {
     method: "POST",
     
     body: JSON.stringify(formData)
