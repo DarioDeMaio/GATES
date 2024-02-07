@@ -32,7 +32,7 @@ Una conceria utilizza dispositivi IoT collegati all'hub IoT di Azure per una ges
 
 ## Requirements
 * Azure CLI per poter effettuare la distribuzione delle risorse
-* Node.js (v20.9.0), TypeScript (v4.0.0) e Prisma (v^5.7.1) per effettuare il deploy delle risorse
+* Node.js (v20.9.0), TypeScript (v4.0.0) e Prisma (v^5.7.1) per effettuare il deploy della Function App
 * BootStrap (v5.3)
 
 ## Istruzioni per installare il progetto
