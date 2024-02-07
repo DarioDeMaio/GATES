@@ -15,7 +15,7 @@ Una conceria utilizza dispositivi IoT collegati all'hub IoT di Azure per una ges
 ## Servizi Utilizzati
 
 1. **Azure IoT Hub:** Gestisce la connessione e la comunicazione bidirezionale con i dispositivi IoT, garantendo la gestione efficiente dei dispositivi distribuiti in una conceria.
-2. **Azure Digital Twin:** Utilizzato per gestire ogni dispositivo IoT connesso.
+2. **Azure Device Twin:** Utilizzato per gestire ogni dispositivo IoT connesso.
 3. **Azure Stream Analytics:** Analizza in tempo reale i dati dai dispositivi IoT, facilitando l'elaborazione e l'archiviazione immediata dei dati relativi all'inquinamento.
 4. **Azure SQL Database:** Database relazionale scelto per la sua struttura tabellare e capacità di gestire dati strutturati in modo efficiente.
 5. **Azure Functions:** Utilizzate per consentire all'interfaccia utente di accedere al database e recuperare i dati relativi all'inquinamento.
