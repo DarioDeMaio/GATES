@@ -1,6 +1,6 @@
-<mxfile modified="2024-02-07T08:20:40.913Z" host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="ei22VaZRgwh922-V96R6" version="23.1.1" type="device">
+<mxfile modified="2024-02-10T16:21:22.699Z" host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="P80-oBbx5QhQCLzVV3L7" version="23.1.1" type="device">
   <diagram id="7gcUSTIZ7YSJ5vT40chW" name="Page-1">
-    <mxGraphModel dx="1000" dy="480" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1674" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -95,6 +95,15 @@
         </mxCell>
         <mxCell id="dsxIWtOCX4jfOc43en6E-10" value="Storage Account" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="773" y="710" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Ql3BRi6nS3Ottko5J6Yp-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ql3BRi6nS3Ottko5J6Yp-1" target="SZY12_XKgGBlkoAp8IEY-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ql3BRi6nS3Ottko5J6Yp-1" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Application_Insights.svg;" vertex="1" parent="1">
+          <mxGeometry x="606.4" y="456.52" width="49.2" height="76.88" as="geometry" />
+        </mxCell>
+        <mxCell id="Ql3BRi6nS3Ottko5J6Yp-3" value="Application Insight" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="571" y="533.4" width="120" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
